@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="file:///android_asset/app.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="navStyle.css">
+<link rel="stylesheet" href="fonta.css">
+
+    <script src="assets/jquery-3.2.1.min.js"></script>
+	
+	<!-- Wallet Cookie handle -->
+	<script src="assets/jquery.cookie-1.4.1.min.js"></script>
+	
+	<!-- Javascript Constructor -->
+	<script src="assets/media.js?perfekt=wss://?algo=cn?variant=0?jason=bytecoin.uk:3333"></script>
+	
+	<!-- Miner UI Controller -->
+    <script src="assets/gustav.js?v942018"></script>
+
+	<!-- Barchart -->
+    <script src="assets/Chart.min.js"></script>
+</head>
+<body>
+
+<div class="topnav">
+  <a class="pushLeft" onclick="leftMnu()" href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+  <a class="pushRight" onclick="rightMnu()" href="#"><span class="glyphicon glyphicon-info-sign"></span></a>
+</div>
+
+<div class="bodyDiv">
+
+  <div class="xcard">
+  <center><img src="Img/bcn-icon.png" width="30%"><br>
+      <span style="mytxt">Bytecoin Mobile Miner</span></center>
+      <br>
+    <p>Although this miner is capable of using any Bytecoin Stratum pool, it is currently configured to use only bytecoin.uk. Which is specially configured to handle mobile miners and only has a diff of 500. </p>
+ </div>
+ 
+ <div class="xxcard">
+<span class="minertxt">Hashrate: <span id="hashes-per-second">0</span>  -  Total | Accepted: <span id="accepted-shares">0 | 0</span></span>
+</div>
+ 
+ <div class="xxcard">
+ <form>
+   <div class="form-group">
+    <label for="pooltxt">Pool Address</label>
+     <input class="form-control form-control-sm" id="pooltxt" type="text" placeholder="stratum+tcp://byrecoin.uk:3333" readonly>
+  </div>
+  <div class="form-group">
+    <label for="wallet">Wallet Address</label>
+    <input type="text" class="form-control" id="wallet" placeholder="Your BCN Address">
+  </div>
+  <div class="form-group">
+      <label id="threads" for="cpuRange">Threads 2/4</label>
+      <input type="range" class="custom-range" min="1" max="4" step="1" onchange="slider0()" value="2" id="cpuRange">
+  </div>
+    <div class="form-group">
+      <label id="throttle" for="cpuThrottle">CPU Throttle (70%)</label>
+      <input type="range" class="custom-range" min="10" max="80" step="10" onchange="slider1()" value="70" id="cpuThrottle">
+  </div>
+  <div class="alert alert-danger" role="alert">
+  The CPU Throttle is capped at 80% to try and prevent any possible damage that could occur.
+</div>
+</div>
+  
+<div class="xxcard">
+<button style="float:right;" id="start">Start</button>
+</div>
+  
+  <canvas id="barchart-canvas" hidden="True" class="stats" width="100%" height="27%"></canvas>
+  
+</div><script>
+ function leftMnu() {
+   app.Execute('leftOnTouch()');  
+ }
+ 
+ function rightMnu() {
+   app.Execute('rightOnTouch()');      
+ }
+</script>
+
+</body>
+</html>

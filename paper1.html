@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script src="file:///android_asset/app.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="navStyle.css">
+<link rel="stylesheet" href="fonta.css">
+<title> </title>
+</head>
+
+<body>
+<div class="topnav">
+  <a class="pushLeft" onclick="leftMnu()" href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+  <a class="pushRight" onclick="rightMnu()" href="#"><span class="glyphicon glyphicon-info-sign"></span></a>
+</div>
+
+<div class="bodyDiv">
+<div class="xcard">
+  <center><img src="Img/Bytecoin Toolkit.png" width="30%"><br>
+      <span class="mytxt">Paper Wallet</span></center>
+  <br><p>Create a wallet using either a custom or generated seed, restore an existing wallet
+  using a seed you alrready have or view the ballance of an existing wallet using a view key
+  that you already have.</p>
+
+</div> 
+
+<div class="xxcard">
+
+<!-- <div class="col-lg-12 col-sm-12" role="tabpanel" style="margin-top: 1.2em;"> -->
+
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="/#create" aria-controls="create" role="tab" data-toggle="tab" aria-expanded="true">Create</a></li>
+        <li role="presentation" class=""><a href="/#restore" aria-controls="restore" role="tab" data-toggle="tab" aria-expanded="false">Restore</a></li>
+      </ul>
+
+      <div class="tab-content">
+
+        <div role="tabpanel" class="tab-pane active in" id="create">
+
+          <form class="form-horizontal" role="form" onsubmit="event.stopPropagation(); return false;">
+
+            <div class="form-group has-feedback has-error">
+              <label class="control-label col-sm-3" for="passphrase">Enter your Passphrase</label><br />
+
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Type your passphrase here" name="passphrase" id="passphrase" style="padding-right: 160px;">
+                <span class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true" style="position: absolute; right: 150px;"></span>
+                <button class="col-sm-2 btn btn-primary" style="position: absolute; right: 15px; top: 0; border-bottom-left-radius: 0; border-top-left-radius: 0;" data-toggle="modal" data-target="#passphraseGenerateModal">... or Generate
+                </button>
+              </div>
+            </div>
+
+            <div class="progress col-sm-offset-3 col-sm-9" style="padding: 0;">
+              <div id="passphrase_security" style="min-width: 40%; width: 5%;" class="progress-bar progress-bar-striped progress-bar-danger" role="progressbar">very weak (less than 10 words)</div>
+            </div>
+
+            <div class="form-group has-feedback has-success">
+              <label class="control-label col-sm-3" for="passphrase_repeat">Repeat your Passphrase</label><br />
+
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Repeat your passphrase here" id="passphrase_repeat">
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div style="text-align: center;" class="col-sm-offset-2">
+                <button class="btn btn-success disabled" id="createWallet">Create Wallet</button>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade" id="restore">
+
+          <form class="form-horizontal" role="form" onsubmit="event.stopPropagation(); return false;">
+
+            <div class="form-group has-feedback">
+              <label class="control-label col-sm-3" for="passphrase">Enter your Passphrase</label>
+
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Type your passphrase here" name="passphrase_restore" id="passphrase_restore">
+                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div style="text-align: center;" class="col-sm-offset-3 col-sm-9">
+                <button class="btn btn-primary disabled" id="restoreWallet">Restore Wallet</button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  <div class="modal fade modal-scrollable" id="passphraseGenerateModal" tabindex="-1" role="dialog" aria-labelledby="generateModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title">Generate Passphrase</h4>
+        </div>
+        <div class="modal-body">
+          <p>Tap the screen repeatedly to add entropy and generate a new address.</p>
+
+          <div class="progress">
+            <div class="progress-bar progress-bar-stripped active" role="progressbar" aria-valuenow="100" aria-valuemin="100" aria-valuemax="100" style="width: 100%;" id="moves_required_count">100s</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade modal-scrollable" id="showResultsModal" tabindex="-1" role="dialog" aria-labelledby="generateModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+          <h2 class="modal-title" align="center">Your wallet is <span id="mode_dependant_action">generated</span>!</h2>
+        </div>
+        <div class="modal-body" id="modal-body">
+          <div class="row">
+            <div class="col-md-3">
+              <h4>Address</h4>
+
+              <div class="qrcode" id="qrcode_address"></div>
+              <br>
+
+
+              <div class="panel panel-default">
+                <div class="resulting panel-body" id="resulting_address" style="word-wrap: break-word;"></div>
+              </div>
+
+
+              <p class="text-muted"><span class="glyphicon glyphicon-info-sign"></span> This is your wallet's public address. You can give it to anyone to receive money.</p>
+
+            </div>
+			<div class="col-md-3">
+			  <h4>Tracking key</h4>
+			  
+			  <div class="qrcode" id="qr_tracking_key"></div>
+              <br>
+				
+			  <div class="panel panel-default">
+                <div class="resulting panel-body" id="resulting_view_key" style="word-wrap: break-word;"></div>
+              </div>
+			  
+			  <p class="text-muted"><span class="glyphicon glyphicon-info-sign"></span> Import into Bytecoin desktop or web Wallet to track incoming transactions. </p>
+			  
+            </div>			
+          <!--/div-->
+			
+		  <!--div class="row"-->
+            <div class="col-md-3">
+              <h4 class="text-danger">Passphrase</h4>
+
+              <div class="qrcode" id="qrcode_pass_phrase"></div>
+              <br>
+
+              <div class="panel panel-danger">
+                <div class="resulting panel-body" id="resulting_passphrase"></div>
+              </div>
+
+              <p class="text-muted"><span class="glyphicon glyphicon-info-sign"></span> Use this to restore your wallet using this app. <strong>Keep it secret!</strong></p>
+            </div>
+            <div class="col-md-3">
+              <h4 class="text-danger">Private Key</h4>
+
+              <div class="qrcode" id="qrcode_private_key"></div>
+              <br>
+
+              <div class="panel panel-danger">
+                <div class="resulting panel-body" id="resulting_private_key" style="word-wrap: break-word;"></div>
+              </div>
+		  
+			  <p class="text-muted"><span class="glyphicon glyphicon-info-sign"></span> You can import it into Bytecoin Wallet. <strong>Keep it secret!</strong></p>
+
+			</div>
+			<p id="xx00xx00"></p>
+
+          </div>
+          <h2 style="text-align: center;" id="redtxt" class="print-hide text-danger">Please save this data for future use! You are the only person who has this information...</h2>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="save_results" onClick="saveWallet()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</div>
+
+
+</div> <!-- xxcard div ends -->
+  <script>
+   function saveWallet() {
+        var styleTxt = app.ReadFile("assets/style.css");
+        document.getElementById("redtxt").innerHTML = " ";
+		var element = document.getElementById("modal-body").innerHTML;
+        var walletTxt = "<html><head><style>" + styleTxt + "</style></head><body>" + element + "</body></html>";
+        var fldr = app.GetInternalFolder();
+        app.WriteFile(fldr + "/BCNpaper.htm", walletTxt);
+        document.getElementById("redtxt").attr('style','color: green;');
+        document.getElementById("redtxt").innerHTML = "File saved: " + fldr + "/BCNpaper.htm";
+ 
+
+}
+
+  </script>
+  
+<footer style="text-align: center; margin-top: 100px;">
+
+<script type="text/javascript" src="assets/scr.js"></script>
+<script type="text/javascript" src="assets/scr1.js"></script>
+<script type="text/javascript" src="assets/scr2.js"></script>
+<script type="text/javascript" src="assets/scr3.js"></script>
+<script type="text/javascript" src="assets/scr4.js"></script>
+<script type="text/javascript" src="assets/scr5.js"></script>
+<script type="text/javascript" src="assets/scr6.js"></script>
+<script type="text/javascript" src="assets/scr7.js"></script>
+<script type="text/javascript" src="assets/scr8.js"></script>
+<script type="text/javascript" src="assets/scr9.js"></script>
+<script type="text/javascript" src="assets/scr10.js"></script>
+<script type="text/javascript" src="assets/scr11.js"></script>
+
+</footer>
+
+
+
+</body></html>

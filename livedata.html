@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script src="file:///android_asset/app.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="navStyle.css">
+
+<style type="text/css">
+
+.tg  {margin:auto;width:90%;border-collapse:collapse;border-spacing:0;border:none;border-color:#999;}
+.tg td{padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#ffffff;}
+.tg th{padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#ffffff;}
+.tg .tg-jy0s{background-color:#7a7d82;vertical-align:top}
+.tg .tg-q8u3{background-color:#ffffff;vertical-align:top}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+
+</style>  
+</head>
+
+<body onload="startTimer()">
+<div class="topnav">
+  <a class="pushLeft" onclick="leftMnu()" href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+  <a class="pushRight" onclick="rightMnu()" href="#"><span class="glyphicon glyphicon-info-sign"></span></a>
+</div>
+
+<div class="bodyDiv">
+<div class="xcard">
+
+  <center><h2>USD: <span class="price" id="PRICE_BCN"></span> (<span class="pct-change" id="CHANGE24HOURPCT_BCN">-3.85%</span>)</h2></center>
+  <br />
+
+<table class="tg" style="width: 90%; margin: auto;" cellpadding="5">
+  <tr>
+    <th class="tg-jy0s" colspan="2"><u><b><center>Last Trade:</center></b></u></th>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"><b>Market:</b></td>
+    <td class="tg-q8u3"><span class="exchange" id="LASTMARKET_BCN">HitBTC</span></td>
+  </tr>
+<tr>
+<td class="tg-yw4l"><b>Volume (BCN):</b></td>
+<td class="tg-q8u3"><span id="LASTVOLUME_BCN">B 100.00</span></td>
+</tr>
+<tr>
+<td class="tg-yw4l"><b>Volume (USD):</b></td>
+<td class="tg-q8u3"><span id="LASTVOLUMETO_BCN">$ 0.7077</span></td>
+</tr>
+<tr>
+<td class="tg-yw4l"><b>Trade ID:</b></td>
+<td class="tg-q8u3"><span id="LASTTRADEID_BCN"></span>284332378</span></td>
+</tr>
+</table>
+<br />
+
+<table class="tg" style="width: 90%; margin: auto;" cellpadding="10">
+  <tr>
+    <th class="tg-jy0s" colspan="2"><u><b><center>24 Hour Stats</center></b></u></th>
+  </tr>
+<tr>
+<td class="tg-yw4l"><b>Price Change:</b></td>
+<td class="tg-q8u3"><span id="CHANGE24HOUR_BCN">$ -0.00028</span></td>
+</tr>
+<tr>
+<td class="tg-yw4l"><b>Open Price:</b></td>
+<td class="tg-q8u3"><span id="OPEN24HOUR_BCN">$ 0.007360</span></td>
+</tr>
+<tr>
+<td class="tg-yw4l"><b>High Price:</b></td>
+<td class="tg-q8u3"><span id="HIGH24HOUR_BCN">$ 0.007372</span></td>
+</tr>
+<tr>
+<td class="tg-yw4l"><b>Low Price:</b></td>
+<td class="tg-q8u3"><span id="LOW24HOUR_BCN">$ 0.006628</span></td>
+</tr>
+<tr>
+<td class="tg-yw4l"><b>Trade Volume (B):</b></td>
+<td class="tg-q8u3"><span id="VOLUME24HOUR_BCN">B 18,691,280.0</span></td>
+</tr>
+<tr>
+<td class="tg-yw4l"><b>Trade Volume ($):</b></td>
+<td class="tg-q8u3"><span id="VOLUME24HOURTO_BCN">$ 129,285.2</span></td>
+</tr>
+</table>
+<br />
+<table class="tg" style="width: 90%;" cellpadding="10">
+<tr>
+<td class="tg-yw4l"><b>Total Volume (B):</b></td>
+<td class="tg-q8u3"><span id="TOTALVOLUME24HOUR_BCN">BCN 1,141.41 M</span></td>
+</tr>
+<tr>
+<td class="tg-yw4l"><b>Total Volume ($):</b></td>
+<td class="tg-q8u3"><span id="TOTALVOLUME24HOURTO_BCN">$ 8,074.76 K</span></td>
+</tr>
+</tbody>
+</table>
+
+<br>
+
+</div>
+
+<br>
+<center>Data From <a href="http://cryptocompare.com" target="new">CryptoCompare.com</a>
+</div>
+<script>
+
+function startTimer() {
+    setInterval(updateInfo, 1500);
+}
+
+function updateInfo() {
+    var url = "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BCN&tsyms=USD";
+    var httpRequest = new XMLHttpRequest(); 
+    httpRequest.onreadystatechange = function() { HandleReply(httpRequest); };   
+    httpRequest.open("GET", url, true); 
+    httpRequest.send(null); 
+
+}
+
+function HandleReply( httpRequest ) 
+{ 
+    if( httpRequest.readyState==4 ) 
+    { 
+        //If we got a valid response. 
+        if( httpRequest.status==200 ) 
+        { 
+           
+            bcnData = JSON.parse( httpRequest.responseText );
+            priceTxt = bcnData['DISPLAY']['BCN']['USD']['PRICE'];
+            lastMarket = bcnData['DISPLAY']['BCN']['USD']['LASTMARKET'];
+            lastVolume = bcnData['DISPLAY']['BCN']['USD']['LASTVOLUME'];
+            lastVolumeTo = bcnData['DISPLAY']['BCN']['USD']['LASTVOLUMETO'];
+            lastTradeId = bcnData['DISPLAY']['BCN']['USD']['LASTTRADEID'];
+            change24Hour = bcnData['DISPLAY']['BCN']['USD']['CHANGE24HOUR'];
+            open24Hour = bcnData['DISPLAY']['BCN']['USD']['OPEN24HOUR'];
+            high24Hour = bcnData['DISPLAY']['BCN']['USD']['HIGH24HOUR'];
+            low24Hour = bcnData['DISPLAY']['BCN']['USD']['LOW24HOUR'];
+            volume24Hour = bcnData['DISPLAY']['BCN']['USD']['VOLUME24HOUR'];
+            volume24HourTo = bcnData['DISPLAY']['BCN']['USD']['VOLUME24HOURTO'];
+            totalVolume24Hour = bcnData['DISPLAY']['BCN']['USD']['TOTALVOLUME24H'];
+            totalVolume24HourTo = bcnData['DISPLAY']['BCN']['USD']['TOTALVOLUME24HTO'];
+            change24HourPct = bcnData['DISPLAY']['BCN']['USD']['CHANGEPCT24HOUR'];
+            
+            document.getElementById( "PRICE_BCN" ).innerHTML = priceTxt;
+            document.getElementById( "LASTMARKET_BCN" ).innerHTML = lastMarket;
+            document.getElementById( "LASTVOLUME_BCN" ).innerHTML= lastVolume;
+            document.getElementById( "LASTVOLUMETO_BCN" ).innerHTML = lastVolumeTo
+            document.getElementById( "LASTTRADEID_BCN" ).innerHTML = lastTradeId;
+            document.getElementById( "CHANGE24HOUR_BCN" ).innerHTML = change24Hour;
+            document.getElementById( "OPEN24HOUR_BCN" ).innerHTML = open24Hour;
+            document.getElementById( "HIGH24HOUR_BCN" ).innerHTML = high24Hour;
+            document.getElementById( "LOW24HOUR_BCN" ).innerHTML  = low24Hour;
+            document.getElementById( "VOLUME24HOUR_BCN" ).innerHTML = volume24Hour;
+            document.getElementById( "VOLUME24HOURTO_BCN" ).innerHTML = volume24HourTo;
+            document.getElementById( "TOTALVOLUME24HOUR_BCN" ).innerHTML =totalVolume24Hour;
+            document.getElementById( "TOTALVOLUME24HOURTO_BCN" ).innerHTML = totalVolume24HourTo;  
+            document.getElementById( "CHANGE24HOURPCT_BCN" ).innerHTML = change24HourPct + "%";
+            var x = change24HourPct.charAt(0);
+            if (x == "-") {
+              document.getElementById( "CHANGE24HOURPCT_BCN" ).style.color = "#bc0b1d"; 
+            } else {
+                document.getElementById( "CHANGE24HOURPCT_BCN" ).style.color = "#2e9b32";
+            }
+                      
+              
+            
+        } 
+        //An error occurred 
+        else 
+           app.ShowPopup( "Error: " + httpRequest.status + httpRequest.responseText, "Bottom" ); 
+    } 
+} 
+
+
+ function leftMnu() {
+   app.Execute('leftOnTouch()');  
+ }
+ 
+ function rightMnu() {
+   app.Execute('rightOnTouch()');      
+ }
+
+</script>
+
+	</body>
+</html>

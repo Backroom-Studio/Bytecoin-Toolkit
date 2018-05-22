@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="file:///android_asset/app.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="navStyle.css">
+<link rel="stylesheet" href="fonta.css">
+</head>
+<body>
+
+<div class="topnav">
+  <a class="pushLeft" onclick="leftMnu()" href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+  <a class="pushRight" onclick="rightMnu()" href="#"><span class="glyphicon glyphicon-info-sign"></span></a>
+</div>
+
+<div class="bodyDiv">
+  <div class="xcard">
+  <center><img src="Img/Bytecoin Toolkit.png" width="30%"><br>
+      <span style="font-size:28px;font-weight:bold;">About v0.0.1</span></center>
+      <br>
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <span style="font-size:20px;font-weight:bold;"><span class="glyphicon glyphicon-edit"></span> Developed by</span>
+      
+    </div><br>
+    <p class="mb-1">Backroom Studio, a fringe Android developer turning spare time into software. </p>
+    <small class="text-muted">http://backroom-studio.ml</small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <span style="font-size:20px;font-weight:bold;"><span class="glyphicon glyphicon-duplicate"></span> Software License</span>
+      
+    </div><br>
+    <p class="mb-1">Licensed using WTFPL-SE 2.0 (as free as it gets) for more info wisit the site.</p>
+   <small class="text-muted">http://wtfpl-se.tk</small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <span style="font-size:20px;font-weight:bold;"><span class="glyphicon glyphicon-bitcoin"></span> Developer Support</span>
+    </div><br>
+    <p class="mb-1">This application is 100% Free and contains no ads! Donate Bytecoin to support future development:</p>
+    <br>
+    <center><img src="Img/cryptonator_bcn.jpg"></center>
+
+  </a>
+</div>
+
+  
+  </div>
+</div>
+
+<br>
+<center>...</center>
+
+
+
+<script>
+ function leftMnu() {
+   app.Execute('leftOnTouch()');  
+ }
+ 
+ function rightMnu() {
+   app.Execute('rightOnTouch()');      
+ }
+</script>
+
+
+</body>
+</html>

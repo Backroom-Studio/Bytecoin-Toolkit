@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="file:///android_asset/app.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="navStyle.css">
+<link rel="stylesheet" href="fonta.css">
+</head>
+<body>
+<div class="topnav">
+  <a class="pushLeft" onclick="leftMnu()" href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+  <a class="pushRight" onclick="rightMnu()" href="#"><span class="glyphicon glyphicon-info-sign"></span></a>
+</div>
+
+<div class="bodyDiv">
+  <div class="xcard">
+  <center><img src="Img/Bytecoin Toolkit.png" width="30%"><br>
+      <span style="font-size:28px;font-weight:bold;">Bytecoin Toolkit</span></center>
+      <br>
+      <p>Welcome to the Bytecoin ecosystem... You now have all the tools and information needed to experience the Original, Private, Untracable Cryptocurrency!</p></center>
+      <br>
+          
+  </div>
+  
+<div class="xxcard">
+<center><span style="font-size:20px;font-weight:bold;">Private and Secure</span></center>
+ <i class="fa fa-user-secret fa-3x fa-pull-left fa-border" aria-hidden="true"></i>
+...Bytecoin protects your privacy by utilizing a form of ring encryption on all 
+transactions which effectivly defeats blockchain analysis and is inherently secure due
+to the CryptoNote algorithms that power the blockchain.
+</div>
+
+<div class="xxcard">
+<center><span style="font-size:20px;font-weight:bold;">Low Consumtion</span></center>
+ <i class="fa fa-microchip fa-3x fa-pull-left fa-border" aria-hidden="true"></i>
+...Bytecoin is not only designed to be effeciently mined on ecenomical desktop hardware
+but built in penalties that still effect the newest ASIC miners. Combined with its emission 
+rate this means that your investment is guarenteed to increase given reasonable time.
+</div>
+<br>
+  <div class="custom-control custom-checkbox my-1 mr-sm-2" style="width:60%;margin:auto;">
+    <input type="checkbox" class="custom-control-input" id="customControlInline">
+    <label class="custom-control-label" for="customControlInline">Enable Persistent Notification.</label>
+  </div>
+
+
+
+<script>
+ function leftMnu() {
+   app.Execute('leftOnTouch()');  
+ }
+ 
+ function rightMnu() {
+   app.Execute('rightOnTouch()');      
+ }
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</body>
+</html>
