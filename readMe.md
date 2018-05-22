@@ -3,11 +3,11 @@
 Bytecoin Toolkit is an Android app, written using the DroidScript IDE, which provides several tools that all deal with the use of ByteCoin.
 
 Included Tools:
-	- Paper Wallet
-	- Mobile Miner
-	- QRcode reader / maker
-	- Streaming Coin Data
-	- and more...
+- Paper Wallet
+- Mobile Miner
+- QRcode reader / maker
+- Streaming Coin Data
+- and more...
 
 Want to get involved with the project? read on...
 
