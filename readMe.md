@@ -42,7 +42,8 @@ This project uses an extremely permissive license.
  Special Edition - March 2018 [http://wtfpl-se.tk][2]
  
 <details>
-<summary>Expand for license text.</summary>
+<summary>Expand for license text.</summary> 
+   <br>
 
  Everyone is permitted to copy and distribute verbatim or modified 
  copies of this license as the need arises. 
@@ -65,6 +66,19 @@ ALL SOURCE CODE IS INTENDED TO BE READ AS SCIENCE FICTION STRICLY
 FOR ENTERTAINMENT.
 </details>
 
+***
+
+## Buy me a ~~Coffee~~ Beer?
+
+<details>
+<summary>Expandable</summary>
+   <br>
+   Visit my site for details on how to send me a bunch of nearly worthless alt coins that will instantly Go Moon the moment you stop Hodling them and be worthless again by the time I figure out my wallet has anything in it. But.. will still be enought for that beer.
+   
+   [http://backroom-studio.tk][3]
+
+</details>
 
 [1]: http://droidscript.org
 [2]: http://wtfpl-se.tk
+[3]: http://backroom-studio.tk
