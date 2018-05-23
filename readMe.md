@@ -1,4 +1,4 @@
-## Bytecoin Toolkit 0.0.1 <img src="Img/bcn-icon.png" width="60">
+## Bytecoin Toolkit 0.0.1 
 
 Bytecoin Toolkit is an Android application written in Javascript & HTML using the [DroidScript IDE][1], which strives to provide its users with everything they need (and want) to use and enjoy the Bytecoin Cryptocurrency.
 
