@@ -39,18 +39,18 @@
 	
 	<!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
 
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Google PlayStore <i class="fab fa-google-play"></i></h4>
+        <h4 class="modal-title"><i class="fab fa-google-play"></i> Google PlayStore </h4>
       </div>
       <div class="modal-body">
         <p>This app is currently NOT on the Google PlayStore. Why? Because I need to setup a Developer account with Google which carries a one time fee of $25. (yes I'm that broke)</p>
 		<p>If you would like to sponsor my Developer account please <form action="https://www.coinpayments.net/index.php" method="post">
-	<input type="hidden" name="cmd" value="_donate">
+	<center><input type="hidden" name="cmd" value="_donate">
 	<input type="hidden" name="reset" value="1">
 	<input type="hidden" name="merchant" value="a3db014fccfbd64e790f8b46e7b1758c">
 	<input type="hidden" name="item_name" value="Google Play Support">
@@ -62,7 +62,7 @@
 	<input type="image" src="https://www.coinpayments.net/images/pub/donate-small-grey.png" alt="Donate with CoinPayments.net">
 </form>  </p>
 <br>
-<center><a href="#">Download Apk File Here</a></center>
+<a href="#">Download Apk File Here</a></center>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -71,6 +71,43 @@
 
   </div>
 </div>
+
+	<!-- Donate Modal -->
+	<!-- to call modal add data-toggle="modal" & data-target="#donateModal" to btn or link -->
+<div id="donateModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><i class="fas fa-donate"></i> Developer Support </h4>
+      </div>
+      <div class="modal-body">
+                      <center><img src="images/qrcode-bnc.jpg" alt=""></center>
+              <p>If your the kind of person who likes to support awesome people who make free software your more than welcome to buy me a beer. You can send Bytecoin using the QRcode or click the CoinPayments button and send any fuckin coin you want...</p>
+			  
+			  <center><form action="https://www.coinpayments.net/index.php" method="post">
+	<input type="hidden" name="cmd" value="_donate">
+	<input type="hidden" name="reset" value="1">
+	<input type="hidden" name="merchant" value="a3db014fccfbd64e790f8b46e7b1758c">
+	<input type="hidden" name="item_name" value="Bytecoin Toolkit Donation">
+	<input type="hidden" name="currency" value="USD">
+	<input type="hidden" name="amountf" value="10.00000000">
+	<input type="hidden" name="allow_amount" value="1">
+	<input type="hidden" name="want_shipping" value="0">
+	<input type="hidden" name="allow_extra" value="1">
+	<input type="image" src="https://www.coinpayments.net/images/pub/donate-wide-blue.png" alt="Donate with CoinPayments.net">
+</form></center><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- END of donate modal -->
 	
 	<header id="fh5co-header">
 		<div class="container">
@@ -156,13 +193,14 @@
 		
 		</div>
 
-
+		
 
 		<div id="features">
 			<div class="container">
 				<div class="row text-center fh5co-heading">
 					<div class="col-md-8 col-md-offset-2">
 						<h2>More Stuff</h2>
+						<hr class="star-dark">
 						<p>I'm getting tired of fashioning short, clever, descriptive sentences so idk what you will find below this point.</p>
 					</div>
 				</div>
@@ -170,7 +208,7 @@
 					<div class="col-md-3 animate-box">
 						<div class="feature-center">
 							<span class="icon">
-								<i class="fas fa-code"></i>
+								<i class="fab fa-osi"></i>
 							</span>
 							<h3>Open Source</h3>
 							<p>This software is as free as it gets. Check our <a href="https://github.com/Backroom-Studio/">Github page</a> if your looking for source.</p>
@@ -191,7 +229,7 @@
 								<i class="fas fa-donate"></i>
 							</span>
 							<h3>Donations Welcome</h3>
-							<p>Did we mention that you can easily <a href="">send a donation</a> and help support awesome people who make free software?</p>
+							<p>Did we mention that you can easily <a data-toggle="modal" data-target="#donateModal" href="#">send a donation</a> and help support awesome people who make free software?</p>
 						</div>
 					</div>
 					<div class="col-md-3 animate-box">
@@ -213,16 +251,10 @@
 			<div class="container">
 				<div class="col-md-12 text-center">
 					<p class="copyright">
-						<small><span style="color:#fff;">NO Rights Reserved <a href="http://backroom-studio.ml" target="_blank">Backroom Studio</a> 2018</span></small>
+						<small><span style="color:#fff;">NO Rights Reserved <a href="http://backroom-studio.tk" target="_blank">Backroom Studio</a> 2018</span></small>
 						
 					</p>
-					<ul class="fh5co-social" style="color:#fff;">
 
-						<li><a href="https://backroom-studio.github.io"><i class="fab fa-github"></i></a></li>
-						
-						<li><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
-						<li><a href="#"><i class="fab fa-google-play"></i></a></li>
-					</ul>
 				</div>
 			</div>
 		</footer>

@@ -26,6 +26,46 @@ body {
   position: relative;
 }
 
+hr.star-light,
+hr.star-dark {
+  
+  padding: 0;
+  text-align: center;
+  border: none;
+  border-top: solid 0.25rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+hr.star-light:after,
+hr.star-dark:after {
+  position: relative;
+  top: -.8em;
+  display: inline-block;
+  padding: 0 0.25em;
+  content: '\f3fa';
+  font-family: Font Awesome;
+  font-size: 2em;
+}
+
+hr.star-light {
+  border-color: #fff;
+}
+
+hr.star-light:after {
+  color: #fff;
+  background-color: #18BC9C;
+}
+
+hr.star-dark {
+  border-color: #2C3E50;
+}
+
+hr.star-dark:after {
+  color: #2C3E50;
+  background-color: white;
+}
+
 a {
   color: #ee4287;
   -webkit-transition: 0.5s;
