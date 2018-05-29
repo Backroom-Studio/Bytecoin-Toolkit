@@ -3,32 +3,70 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="file:///android_asset/app.js"></script>
+<script src="qr.js"></script>
 <link rel="stylesheet" href="assets/style.css">
 <link rel="stylesheet" href="navStyle.css">
 <link rel="stylesheet" href="fonta.css">
+
+<script>
+window.addEventListener("load", function(){
+   var qr = new QRious({
+          size: 250,
+          element: document.getElementById('qr'),
+          value: '23ZuxX3rujghtvqq14GnKgDf88YD9g7TmU4P2jqz8sCYMZPv2p6HJiqfNCezqRpKfLJf5dmANoy6uA2bGtZ3uT5fJJE5bmy'
+        });   
+    
+    var $value = document.getElementById('qrTxt');
+    var $background = document.getElementById('qrBack');
+    var $foreground = document.getElementById('qrFor');
+    
+    $value.addEventListener('input', function() {
+      qr.value = $value.value;
+    });
+   
+    $background.addEventListener('change', function() {
+      qr.background = $background.value || null;
+    });
+
+    $foreground.addEventListener('change', function() {
+      qr.foreground = $foreground.value || null;
+    });
+});
+</script>
+
 </head>
 <body>
 <div class="topnav">
-  <a class="pushLeft" onclick="leftMnu()" href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-  <a class="pushRight" onclick="rightMnu()" href="#"><span class="glyphicon glyphicon-info-sign"></span></a>
+  <a class="pushLeft" onclick="leftMnu()" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
+  <span>Bytecoin Toolkit</span>
+  <a class="pushRight" onclick="rightMnu()" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
 </div>
 
 <div class="bodyDiv">
   <div class="xcard">
   <center><img src="Img/Bytecoin Toolkit.png" width="30%"><br>
-      <span class="mytxt">QRcode Scanner/Maker</span></center>
+      <span class="mytxt">QR Tools</span></center>
       <br>
-      <p>Everything you need to get started using the original private cryptocurrency on your Android device.</p></center>
-      <br>
-      
-      
-      <br>
-      <p> </p>
-      
-      
+      <p>This area provides tools for scanning QR Codes as well as making your own.</p></center>
+  </div>
+  <br>
+  <div class="xxcard">
+  <label for="qrTxt"><span style="font-size:20px;">Create a QR Code:</span></label>
+  <input type="text" class="form-control" id="qrTxt" aria-label="Wallet Value" placeholder="Enter Your Wallet Address Here">
+  <br>
+  <label for="qrBack">Background:</label>
+  <input type="color" id="qrBack" value="#ffffff">
+  <label for="qrFor">Foreground:</label>
+  <input type="color" id="qrFor" value="#000000">
+  <br>
+  <hr>
+  <center><canvas id="qr" height="250" border="1"></canvas></center>
+  <hr><br>
+  <button type="button" class="btn btn-primary btn-block" onclick="scanQR()">Scan a QR Code</button>
   </div>
 </div>
-
+<br>
+...
 
 
 
@@ -41,9 +79,11 @@
  function rightMnu() {
    app.Execute('rightOnTouch()');      
  }
+ 
+ function scanQR() { 
+  
+ }
 </script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
 </body>
 </html>

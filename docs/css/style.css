@@ -44,7 +44,7 @@ hr.star-dark:after {
   display: inline-block;
   padding: 0 0.25em;
   content: '\f3fa';
-  font-family: Font Awesome;
+  font-family: FontAwesome;
   font-size: 2em;
 }
 

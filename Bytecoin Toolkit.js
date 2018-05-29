@@ -1,11 +1,29 @@
 //Backroom Studio native JS app templet
+function checkOpt() {
+    svc.SendMessage( "options" );
+}
+
+function stopSvc() {
+    svc.SendMessage( "stop" );
+    svc.Stop();
+}
 
 //Called when application is started.
 function OnStart()
 {    
+    
+    //Start/connect to our service.
+    svc = app.CreateService( "this","this" );
+ 
+    //This will cause your service to start at boot.
+    app.SetAutoBoot( "Service" ); 
+    
     app.SetScreenMode( "Full" );
     //Lock screen orientation to Portrait.
     app.SetOrientation( "Portrait" );
+    app.SetMenu( "Exit" );  
+    app.EnableBackKey( false );
+    
     
 	//Create the main app layout with objects vertically centered.
 	layMain = app.CreateLayout( "Linear", "VCenter,FillXY");
@@ -26,6 +44,12 @@ function OnStart()
 	
  }
 
+//Called when the back key is pressed.  
+function OnBack()
+{ 
+  app.ShowMenu(); 
+}  
+
 //Create the drawer contents.
 function CreateDrawer()
 {
@@ -44,19 +68,19 @@ function CreateDrawer()
 	layDrawer.AddChild( layDrawerTop );
 	
 	//Add an icon to top layout.
-	var img = app.CreateImage( "Img/Bytecoin Toolkit.png", 0.20 );
+	var img = app.CreateImage( "Img/bcn-icon.png", 0.20 );
 	img.SetPosition( drawerWidth*0.06, 0.04 );
 	layDrawerTop.AddChild( img );
 	
 	//Add bold text under the icon
-	var txtUser = app.CreateText( "Bytecoin Toolkit",-1,-1,"Bold");
+	var txtUser = app.CreateText( "Bytecoin Toolkit 0.1",-1,-1,"Bold");
 	txtUser.SetPosition( drawerWidth*0.07, 0.155 );
 	txtUser.SetTextColor( "White" );
 	txtUser.SetTextSize( 13.7, "dip" );
 	layDrawerTop.AddChild( txtUser );
 	
 	//Add normal text under the bold text
-	txtEmail = app.CreateText( "Bytecoin-Toolkit.ml");
+	txtEmail = app.CreateText( "http://bytecoin-toolkit.tk");
 	txtEmail.SetPosition( drawerWidth*0.07, 0.185 );
 	txtEmail.SetTextColor( "#bbffffff" );
 	txtEmail.SetTextSize( 14, "dip" );
@@ -67,7 +91,7 @@ function CreateDrawer()
 	layDrawer.AddChild( layMenu );
 	
     //Add a list to menu layout (with the menu style option).
-    var listItems = "Home Screen::[fa-home],Paper Wallet::[fa-paperclip],BCN Miner::[fa-microchip],Live Data::[fa-bar-chart],QR Tools::[fa-qrcode],Hashrates::[fa-hashtag],Exchanges::[fa-line-chart],Mining Pools::[fa-sitemap],About::[fa-info-circle]";
+    var listItems = "Home Screen::[fa-home],Paper Wallet::[fa-paperclip],BCN Miner::[fa-microchip],Live Data::[fa-bar-chart],QR Tools::[fa-qrcode],Hashrates::[fa-hashtag],Exchanges::[fa-line-chart],Mining Pools::[fa-sitemap],Settings::[fa-cogs]";
     lstMenu1 = app.CreateList( listItems, drawerWidth, -1, "Menu,Expand" );
     lstMenu1.SetColumnWidths( -1, 0.35, 0.18 );
     lstMenu1.SelectItemByIndex( 0, true );
@@ -132,8 +156,8 @@ function lstMenu_OnTouch( title, body, type, index )
   case "Mining Pools":
     mnuTouch("pools.html");
     break;
-  case "About":
-    mnuTouch("about.html");
+  case "Settings":
+    mnuTouch("settings.html");
     break;
   case "Online Wallet":
     app.OpenUrl("https://bytecoin.money");
@@ -163,9 +187,9 @@ function lstMenu_OnTouch( title, body, type, index )
  function mnuTouch( url )
  {
      app.ShowProgress();
-   	var ip = app.GetIPAddress();
-	if( ip == "0.0.0.0" ) { 
-		web.LoadUrl("error.htm");
+   	var bool = app.IsConnected();
+	if( !bool ) { 
+		web.LoadUrl("error.html");
 	}  else {
         web.LoadUrl( url );
 	}
@@ -196,3 +220,9 @@ function OnMenu( name )
   {
   if( progress==100 ) app.HideProgress();
   }
+  
+  function OnMenu( name )
+{           
+    if ( name == "Exit" ) app.Exit() ; 
+    if ( name == "Website" ) app.OpenUrl("http://backroom-studio.tk"); 
+} 

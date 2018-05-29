@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="file:///android_asset/app.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="navStyle.css">
+<link rel="stylesheet" href="fonta.css">
+
+<script>
+window.addEventListener("load", function(){
+    var fldr = app.GetPrivateFolder("bcnSettings");
+    var setting = app.ReadFile( fldr + "/service.txt");
+    
+    if (setting == "checked") {
+        document.getElementById("noticeCheck").checked = true;
+        document.getElementById("alarmTxt").disabled = false
+        app.Execute("checkOpt()");
+    } 
+    
+});
+
+ function checkToggle() {
+ try {
+    var fldr = app.GetPrivateFolder("bcnSettings");
+    var isChecked = document.getElementById("noticeCheck").checked;
+    //var alarmText = document.getElementById("alarmTxt").value;
+    
+      if (isChecked) {
+        app.WriteFile( fldr + "/service.txt", "checked"); 
+        app.Execute("checkOpt()");
+        document.getElementById("alarmTxt").disabled = false
+      } else {
+        app.WriteFile( fldr + "/service.txt", "Unchecked"); 
+        app.Execute("stopSvc()");
+        document.getElementById("alarmTxt").disabled = true
+      }
+ }
+ catch(err) {
+     app.Debug(err);
+ }
+ }
+
+</script>
+
+</head>
+<body>
+<div class="topnav">
+  <a class="pushLeft" onclick="leftMnu()" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
+  <span>Bytecoin Toolkit</span>
+  <a class="pushRight" onclick="rightMnu()" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+</div>
+
+<div class="bodyDiv">
+  <div class="xcard">
+  <center><img src="Img/Bytecoin Toolkit.png" width="30%"><br>
+      <span class="mytxt">Settings</span></center>
+      <br>
+      <p>Toggle the notification setting and optionaly set a price alarm.</p></center>
+  </div>
+  <br>
+  <div class="xxcard">
+  <label class="container"><span style="font-size:20px;"> Persistant Notification</span>
+  <input id="noticeCheck" type="checkbox" onclick="checkToggle()">
+  <span class="checkmark"></span>
+</label>
+<br>
+<label for="alarmTxt"><span style="font-size:20px;">Set a Price Alert</span></label>
+  <input type="text" class="form-control" id="alarmTxt" aria-label="Alarm Value" placeholder="0.01" disabled="true">
+
+</div>
+
+
+
+
+
+<script>
+ function leftMnu() {
+   app.Execute('leftOnTouch()');  
+ }
+ 
+ function rightMnu() {
+   app.Execute('rightOnTouch()');      
+ }
+</script>
+
+</body>
+</html>
